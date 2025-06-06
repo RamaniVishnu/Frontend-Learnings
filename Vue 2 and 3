@@ -1,0 +1,95 @@
+important docs: 
+ref vs reacive : https://dmitripavlutin.com/ref-reactive-differences-vue/
+
+in vue 2 options api
+1)Primitive values
+<template>
+  <h1>{{msg}}</h1> 
+</template>
+<script>
+export default{
+data(){
+  return {
+    msg: 'hello world'
+  }
+}
+}
+</script>
+
+2) for non primitive values
+<template>
+  <h1>{{msg}}</h1>
+  <p>----------------------</p>
+  <p>using array</p> 
+  <ul v-for="(list,index) in message" :key="index">
+    <li>{{list}}</li>
+  </ul>
+  <p>--------------------------------</p>
+  <p>using obj</p>
+  <ul v-for="employee in employees.data" :key="employee.id">
+      <li>{{employee.name}}</li>
+  </ul>
+</template>
+<script>
+export default{
+data(){
+  return {
+    msg: 'hello world',
+    message: ["hi","hello","good morning"],
+    employees: {
+      data: [
+      {name: 'Ramani', id: 1111},
+      {name: 'kailash',id:222}
+    ]
+    }
+  }
+}
+}
+</script>
+
+
+
+
+in vue 3 composition api
+1) Primitive values using ref and reactive()
+<template>
+   <h1>{{ msg }}</h1>
+   <h2>{{message}}</h2>
+   <input v-model="message" placeholder="enter" />
+</template>
+
+<script setup>
+import {ref,reactive} from 'vue';
+ const msg =ref('hello world');  // using ref as it is meant for using primitive and object values
+ const message = reactive('hello'); // using reactive you will see the output as hello for line no 23 but still when it comes to reactivity, it does not perform as expected.
+                                       reactive is meant for object(includes array);
+</script>
+
+2) for non primitive values
+<template>
+  <h1>{{msg}}</h1>
+  <p>---------------------------</p>
+  <p>using array</p>
+  <ul v-for="(list,index) in message" :key="index">
+    <li>{{list}}</li>
+  </ul>
+  <p>--------------------------------</p>
+  <p>using obj</p>
+  <ul v-for="employee in employees.data" :key="employee.id">
+    <li>{{employee.name}}</li>
+  </ul>
+  <div></div>
+<p></p>
+</template>
+
+<script setup>
+import {ref,reactive} from 'vue';
+const msg=ref('hello world');
+const message=reactive(["hi","hello","good morning"]);
+const employees=reactive({
+  data: [
+      {name: 'Ramani', id: 1111},
+      {name: 'kailash',id:222}
+    ]
+})
+</script>
