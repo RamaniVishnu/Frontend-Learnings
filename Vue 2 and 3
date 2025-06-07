@@ -21,13 +21,13 @@ data(){
   <h1>{{msg}}</h1>
   <p>----------------------</p>
   <p>using array</p> 
-  <ul v-for="(list,index) in message" :key="index">
-    <li>{{list}}</li>
+  <ul>
+    <li v-for="(list,index) in message" :key="index">{{list}}</li>
   </ul>
   <p>--------------------------------</p>
   <p>using obj</p>
-  <ul v-for="employee in employees.data" :key="employee.id">
-      <li>{{employee.name}}</li>
+  <ul>
+      <li v-for="employee in employees.data" :key="employee.id">{{employee.name}}</li>
   </ul>
 </template>
 <script>
@@ -124,13 +124,13 @@ import {ref,reactive} from 'vue';
   <h1>{{msg}}</h1>
   <p>---------------------------</p>
   <p>using array</p>
-  <ul v-for="(list,index) in message" :key="index">
-    <li>{{list}}</li>
+  <ul>
+    <li v-for="(list,index) in message" :key="index">{{list}}</li>
   </ul>
   <p>--------------------------------</p>
   <p>using obj</p>
-  <ul v-for="employee in employees.data" :key="employee.id">
-    <li>{{employee.name}}</li>
+  <ul>
+    <li v-for="employee in employees.data" :key="employee.id">{{employee.name}}</li>
   </ul>
   <div></div>
 <p></p>
