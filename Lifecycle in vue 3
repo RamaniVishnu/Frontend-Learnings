@@ -9,3 +9,47 @@ Before updating DOM	                                      beforeUpdate()	       
 After updating DOM	                                        updated()	                                                 onUpdated()
 Before destroying component	                              beforeDestroy()	                                          onBeforeUnmount()
 After destroying component	                                destroyed()	                                               onUnmounted()
+
+
+
+eg: options api
+export default {
+  data() {
+    return { message: "Hello Vue!" };
+  },
+  created() {
+    console.log("Component is created!");
+  },
+  mounted() {
+    console.log("Component is mounted!");
+  },
+  updated() {
+    console.log("Component updated!");
+  },
+  destroyed() {
+    console.log("Component destroyed!");
+  }
+};
+
+
+
+
+eg: composition api
+<script setup>
+import { ref, onMounted, onUpdated, onUnmounted } from 'vue';
+
+const message = ref("Hello Vue!");
+
+// Lifecycle hooks
+onMounted(() => {
+  console.log("Component is mounted!");
+});
+
+onUpdated(() => {
+  console.log("Component updated!");
+});
+
+onUnmounted(() => {
+  console.log("Component destroyed!");
+});
+</script>
