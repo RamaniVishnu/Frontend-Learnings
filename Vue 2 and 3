@@ -47,7 +47,61 @@ data(){
 }
 </script>
 
+3)v-model
+what is v-model?
+v-model is a Vue directive that creates two-way data binding between a form input and a variable in your component's data. 
+This means that when the user updates the input, the variable's value changes, and when the variable changes, the input updates automatically.
 
+Eg 1: on primitive values 
+<template>
+<input type="text" placeholder="enter feedback" v-model="feedback" />
+  <p> {{feedback}}</p>
+</template>
+<script>
+export default{
+data(){
+  return {
+    feedback: ''
+  }
+}
+}
+</script>
+
+Eg 2: on non primitive values
+<template>
+<input type="text" placeholder="message" v-model="message[0]" />
+  <p>{{message[0]}}</p>
+  <input type="text"  placeholder="employees" v-model="employees.data[0].name" />
+  <p>{{employees.data[0].name}}</p>
+</template>
+<script>
+export default{
+data(){
+  return {
+    message: ["hi","hello","good morning"],
+    employees: {
+      data: [
+      {name: 'Ramani', id: 1111},
+      {name: 'kailash',id:222}
+    ]
+    },
+  }
+}
+}
+</script>
+
+V.v.v.v.v..v.v..v.imp
+Caveat: Reactivity Limitations in Vue 2
+Vue 2 does NOT detect changes when:
+i)Adding new properties to an object (user.newProp = "test" won’t be reactive).
+ii)Changing array length (messages.length = 10 won’t trigger updates).
+
+✅ Workarounds:
+a)Use Vue.set() for objects:
+Vue.set(user, 'newProp', 'test');
+
+b)Use splice() for arrays:
+messages.splice(0, 1, 'Updated message');
 
 
 in vue 3 composition api
