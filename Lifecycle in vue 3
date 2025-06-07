@@ -1,0 +1,11 @@
+Comparison of Lifecycle Hooks: 
+                                                          Options API                                              Composition API
+Stage	                                                  Options API Hook	                                        Composition API Hook
+Before component is created	                            beforeCreate()	                                 ❌ Not available (logic goes inside setup())
+Component is created	                                    created()	                                      ❌ Not available (logic goes inside setup())
+Before mounting to DOM	                                  beforeMount()	                                            onBeforeMount()
+After mounting to DOM	                                    mounted()	                                                  onMounted()
+Before updating DOM	                                      beforeUpdate()	                                            onBeforeUpdate()
+After updating DOM	                                        updated()	                                                 onUpdated()
+Before destroying component	                              beforeDestroy()	                                          onBeforeUnmount()
+After destroying component	                                destroyed()	                                               onUnmounted()
