@@ -1,0 +1,68 @@
+Props in vue 
+Passing data via props in Vue.js allows parent components to send data to child components.
+Props are read-only in child components, meaning the child cannot modify them directly.
+
+Eg: 
+File name: ParentComp.vue
+<template>
+  <div>
+    <ChildrenComp :whatsApp="whatsappMsg" />
+  </div>
+</template>
+<script>
+import ChildrenComp from "./ChildrenComp.vue";
+export default {
+  name: "ParentComp",
+  components: {
+    ChildrenComp,
+  },
+  data() {
+    return {
+      whatsappMsg: "hi, good morning",
+    };
+  },
+};
+</script>
+
+File name: ChildrenComp.vue
+<template>
+  <div>
+    <p>Hey you have received below msg from whatsApp</p>
+    <p>{{ whatsApp }}</p>
+  </div>
+</template>
+<script>
+export default {
+  name: "ChildrenComp",
+  props: {
+    whatsApp: String,
+  },
+  data() {
+    return {};
+  },
+};
+</script>
+
+
+Passing Different Types of Data
+Vue props can accept: 
+✔ Strings: props: { message: String }
+✔ Numbers: props: { count: Number }
+✔ Booleans: props: { isVisible: Boolean } 
+✔ Objects: props: { user: Object } 
+✔ Arrays: props: { items: Array }
+
+Example of passing an object:
+ParentComp.vue
+<ChildComponent :user="{ name: 'Alice', age: 25 }" />
+
+ChildComp file:
+props: {
+  user: Object
+}
+
+🚀 Key Rules of Props
+✔ Props are reactive – If parent data updates, child components receive the changes.
+✔ Props are read-only – Child components cannot modify the received prop. 
+✔ Use default values – Props can have default values if none are passed
+
