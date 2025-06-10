@@ -1,0 +1,92 @@
+1)Provide and inject
+usage:  to avoid prop drilling in vue js , we can use provide and inject and these can be passed data only when the components are in child parent relationship.
+
+2)Can we use provide and inject to pass data or methods from child to parent component? 
+No, Provide/Inject in Vue 3 is designed for passing data downward,from ancestor components to descendant components (typically from parent to child or deeper levels).
+It does not support passing data upward from child to parent.
+
+Example of provide and inject
+File name: HelloWorld.vue(Parent Comp)
+<template>
+  <div>
+    <ChildComp />
+  </div>
+</template>
+
+<script>
+import ChildComp from "./ChildComp.vue";
+export default {
+  name: "HelloWorld",
+  components: {
+    ChildComp,
+  },
+  data() {
+    return {
+      message: "its Working",
+      showButton: false,
+    };
+  },
+  provide() {
+    return {
+      message: this.message,
+      showButton: () => this.showButton,
+      testMeth: this.toggleShow,
+    };
+  },
+  methods: {
+    toggleShow() {
+      console.log("clicked!!!!!!!!!!");
+      this.showButton = !this.showButton;
+      console.log("sho1....", this.showButton);
+    },
+  },
+};
+</script>
+
+File name: ChildComp.vue (1st child comp)
+<template>
+  <div>
+    <p>hiiiii</p>
+    <p>
+      hi , you have received a message from hello world comp ------{{ message }}
+    </p>
+    <SecondChild />
+  </div>
+</template>
+<script>
+import SecondChild from "./SecondChild";
+export default {
+  name: "ChildComp",
+  components: {
+    SecondChild,
+  },
+  inject: ["message"],
+  data() {
+    return {};
+  },
+};
+</script>
+
+
+File name : SecondChild.vue (2nd child comp)
+<template>
+  <div>
+    <p>--------------------</p>
+    <div v-if="showButton()">its working!!!!!...</div>
+    <button @click="testMeth()">Click me</button>
+  </div>
+</template>
+<script>
+export default {
+  name: "SecondChild",
+  inject: ["showButton", "testMeth"],
+  methods: {
+    handleClick() {
+      console.log("button clicked!!!");
+    },
+  },
+};
+</script>
+
+
+
