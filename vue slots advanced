@@ -1,0 +1,72 @@
+Can you pass styling between the components via slots
+Yes! You can pass styling via slots between components in Vue. Since slots allow content projection, you can include CSS styles,
+classes, or inline styles inside the slot content.
+
+
+1. Passing Inline Styles via Slots
+The parent can define styles directly in the slot content.
+
+Child Component (ChildComponent.vue)
+<template>
+  <div>
+    <slot></slot> <!-- Content will inherit parent styling -->
+  </div>
+</template>
+
+Parent Component (App.vue)
+<ChildComponent>
+  <p style="color: red; font-weight: bold;">This text is styled in the parent!</p>
+</ChildComponent>
+✅ The <p> inside the slot retains the inline styles defined by the parent.
+
+
+2. Passing CSS Classes via Slots
+You can also pass CSS classes dynamically.
+
+Child Component
+<template>
+  <div>
+    <slot></slot>
+  </div>
+</template>
+  
+Parent Component
+<ChildComponent>
+  <p class="styled-text">Styled via Parent</p>
+</ChildComponent>
+Parent’s CSS (App.vue)
+<style>
+.styled-text {
+  color: blue;
+  font-size: 20px;
+}
+</style>
+✅ The child inherits styles from the parent, even though the class is defined in the parent’s CSS.
+
+3. Passing Styles via Scoped Slots
+Scoped slots allow dynamic styling based on child component data.
+
+Child Component
+<template>
+  <slot :style="{ color: textColor, fontSize: '20px' }"></slot> <!-- Passing styles -->
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      textColor: "green"
+    };
+  }
+};
+</script>
+Parent Component
+<ChildComponent>
+  <template #default="{ style }">
+    <p :style="style">Styled from Child Component</p>
+  </template>
+</ChildComponent>
+✅ Now the child component passes styles dynamically to the parent.
+
+🔥 Key Takeaways
+✔ Inline styles work inside slot content ✔ CSS classes apply normally inside slots ✔ Scoped slots allow children to send dynamic styles
