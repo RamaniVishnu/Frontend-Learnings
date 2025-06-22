@@ -1,0 +1,76 @@
+Vuejs
+1)Vue 2 and vue 3
+2)option api
+3)composition api
+4)slots
+5)mixins and composables
+6)vuex with modules
+7)routing with elements, mode
+8)is
+9)modifiers
+10)events
+11)emit
+12)provide/inject
+13)props
+14)passing inline or styles
+15)binding
+16)v-model
+17)teleport
+18)this.$parent
+19)this.$route
+20)lazy loading
+21)lifecycle
+22)v-for vs show
+
+JS
+1)hoisting
+2)scope
+3)event loop
+4)closure
+5)callback
+6)arrow and normal function
+7)var,let and const
+8)temporal dead zone
+9)call,bind,apply
+10)promise,fetch and axios
+11)async and await
+12)interceptor in axios
+13)callback hell
+14)promise chain
+15)constructor
+16)prototype in js
+17)type coercion
+18)debounce and throttling
+19)garbage collection
+20)storage - local,session and cookie
+21)cloning
+22)rest and spread operator
+23)map,set
+24)destructuring
+
+scss
+1)scss vs css
+2)variable in scss and css
+3)function
+3)mixins
+4)use 
+5)nested
+
+css
+1)selectors
+2)pseudo elements
+3)css specificity
+4)css positions
+5)box model
+6)
+
+html
+1)semantic elements
+2)inline and block elements
+3)
+
+
+JS programs
+1)braces correct
+2)looping array, object
+3)conversion of types
