@@ -36,7 +36,7 @@ JS
 11)async and await
 12)interceptor in axios
 13)callback hell
-14)promise chain
+14)promise chain and its combinator methods(Promise.all(),Promise.allSettled(),Promise.race(),Promise.any())
 15)constructor
 16)prototype in js
 17)type coercion
