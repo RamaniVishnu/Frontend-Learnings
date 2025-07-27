@@ -22,6 +22,11 @@ Vuejs
 21)lifecycle
 22)v-for vs show
 
+vue- routing
+23)mode in route
+24)router-link vs router.push()
+25) route guards - beforeEnter(),beforeRouteEnter(),beforeRouteUpdate(),beforeRouteLeave(),beforeEach()
+
 JS
 1)hoisting
 2)scope
