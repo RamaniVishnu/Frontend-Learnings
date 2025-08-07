@@ -1,0 +1,62 @@
+Example 1: local registration of a directive in a component
+<template>
+  <div v-colors:one="'blue'">Hiii</div>
+</template>
+
+<script>
+export default{
+  data(){
+    return {}
+  },
+  directives:{
+    color:{ //if it is two names like colorValue then in template it should be <div v-color-value:one="'blue'">Hii</div>
+      mounted(el,binding){
+        el.style.color=binding.value;
+        if(binding.arg === 'one'){
+          el.style.color = 'red';
+        }
+      }
+    }
+  },
+  components:{},
+  computed:{},
+  methods:{}
+}
+</script>
+output: since the arg of value one is defined and if condition is satisfied the "Hiii" will come in red color. if condition fails because of arg like v-color:two="'blue'"
+  then the output "Hii" will be in blue color
+
+Example 2:  Registration of a custom directive globally
+//global main.js
+app.directive('color',{
+  mounted(el,binding){
+        el.style.color=binding.value;
+        if(binding.arg === 'one'){
+          el.style.color = 'red';
+        }
+  }
+  });
+//component
+<template>
+<div v-color:one="'blue'">Hiii</div>
+</template>
+<script>
+  export default{
+data(){
+return{}
+  },
+directives: {
+  colors  
+}
+</script>
+
+what is custom directives?
+A custom directive in vuejs is a way to create reuseable low-level DOM manipulations that can be applied to HTML elements.
+V.imp: directives should need to be inside any lifecycle hooks (can be beforeCreate,created,beforeMount,etc) , if it is not inside the lifecycle hooks then it will throw the
+    error.
+
+when to use custom directives?
+use a directive when:
+a)you need low level DOM access
+b)the behavior is not easily achieved with components or template syntax
+c)you want reusable DOM behavior(like tooltips,autofocus,drag/drop,etc) 
