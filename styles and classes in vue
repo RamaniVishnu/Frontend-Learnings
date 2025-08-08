@@ -1,0 +1,34 @@
+<template>
+  <div>
+    <p :style="{ color: 'red', fontSize: '20px' }" class="demo">
+      {{ count }}
+    </p>
+    <button @click="increment">increment</button>
+    <button @click="decrement" :disabled="count < 0">decrement</button>
+  </div>
+</template>
+<script>
+export default {
+  name: "Parent",
+  data() {
+    return {
+      count: 0,
+    };
+  },
+  computed: {},
+  methods: {
+    increment() {
+      this.count++;
+    },
+    decrement() {
+      this.count--;
+    },
+  },
+};
+</script>
+<style>
+.demo {
+  font-weight: 600;
+  border: 1px solid black;
+}
+</style>
