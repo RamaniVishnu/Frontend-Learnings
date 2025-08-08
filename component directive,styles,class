@@ -1,0 +1,44 @@
+<template>
+  <div>
+      <p v-color="'yellow'" :style="{ color: 'red', fontSize: '20px' }" class="demo">
+      {{ count }}
+    </p>
+    <button @click="increment">increment</button>
+    <button @click="decrement" :disabled="count < 0">decrement</button>
+  </div>
+</template>
+<script>
+export default {
+  name: "Parent",
+  data() {
+    return {
+      count: 0,
+    };
+  },
+  directives: {
+    color: {
+      mounted(el, binding) {
+        console.log("bbb", binding.value);
+        // Applying the color passed in the binding value
+        el.style.color = binding.value;
+      },
+    },
+  },
+  computed: {},
+  methods: {
+    increment() {
+      this.count++;
+    },
+    decrement() {
+      this.count--;
+    },
+  },
+};
+</script>
+<style>
+.demo {
+  color: 'violet';
+  font-weight: 600;
+  border: 1px solid black;
+}
+</style>
